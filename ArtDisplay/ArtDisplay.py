@@ -35,7 +35,7 @@ from gi.repository import RB
 import gettext
 gettext.install('rhythmbox', RB.locale_dir())
 
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 FADE_STEPS = 10
 FADE_TOTAL_TIME = 1000
@@ -133,7 +133,7 @@ class FadingImage (Gtk.Misc):
 	def theme_changed (self, icon_theme):
 		try:
 			self.reload_anim_frames ()
-		except Exception, e:
+		except Exception as e:
 			warn ("Throbber animation not loaded: %s" % e, Warning)
 		self.reload_util_pixbufs ()
 
@@ -145,7 +145,7 @@ class FadingImage (Gtk.Misc):
 		except:
 			try:
 				missing_pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size (self.missing_image, self.size, self.size)
-			except Exception, e:
+			except Exception as e:
 				warn ("Missing artwork icon not found: %s" % e, Warning)
 				return
 
@@ -383,7 +383,7 @@ class ArtDisplayPlugin (GObject.GObject, Peas.Activatable):
 
 		if isinstance(data, GdkPixbuf.Pixbuf):
 			self.current_pixbuf = data
-			uri = "file://" + urllib.pathname2url(filename)
+			uri = "file://" + urllib.request.pathname2url(filename)
 			self.art_widget.set (entry, self.current_pixbuf, uri, None, None, False)
 		else:
 			self.art_widget.set (entry, None, None, None, None, False)

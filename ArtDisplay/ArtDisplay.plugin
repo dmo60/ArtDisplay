@@ -1,5 +1,5 @@
 [Plugin]
-Loader=python
+Loader=python3
 Module=ArtDisplay
 IAge=2
 Depends=rb;artsearch
