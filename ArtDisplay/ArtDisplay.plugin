@@ -2,7 +2,7 @@
 Loader=python3
 Module=ArtDisplay
 IAge=2
-Depends=rb;artsearch
+Depends=rb
 Name=Cover art
 Name[af]=Omslagkuns
 Name[ar]=صورة الغلاف

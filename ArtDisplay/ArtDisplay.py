@@ -24,8 +24,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA.
 
-import gi
-
 from warnings import warn
 
 import rb
@@ -35,7 +33,7 @@ from gi.repository import RB
 import gettext
 gettext.install('rhythmbox', RB.locale_dir())
 
-import urllib.request, urllib.parse, urllib.error
+import urllib.request
 
 FADE_STEPS = 10
 FADE_TOTAL_TIME = 1000
