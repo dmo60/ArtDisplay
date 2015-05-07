@@ -71,7 +71,7 @@ def merge_with_background (pixbuf, bgcolor, pad_if_not_near_square):
 	has_alpha = pixbuf.get_has_alpha ()
 	width, height = pixbuf.props.width, pixbuf.props.height
 	if pad_if_not_near_square and (height < width * ASPECT_RATIO_MIN or
-				       height > width * ASPECT_RATIO_MAX):
+					   height > width * ASPECT_RATIO_MAX):
 		rw, rh = max (width, height), max (width, height)
 		left, top = (rw - width) // 2, (rh - height) // 2
 	else:
@@ -374,7 +374,20 @@ class ArtDisplayPlugin (GObject.GObject, Peas.Activatable):
 			key = entry.create_ext_db_key (RB.RhythmDBPropType.ALBUM)
 			self.art_store.request(key, self.art_store_request_cb, entry)
 
-	def art_store_request_cb(self, key, filename, data, entry):
+	def art_store_request_cb(self, *args): # key, filename, data, entry):
+		
+		# rhythmbox 3.2 breaks the API - 
+		# since there isnt a way to say "we are using RB 3.2" we have to hack this...
+		# need to find the args filename(str), data (pixbuf) and entry (RB.RhythmDBEntry) manually
+		data = None
+		for arg in args:
+			if isinstance(arg, str):
+				filename = arg
+			if isinstance(arg, GdkPixbuf.Pixbuf):
+				data = arg
+			if isinstance(arg, RB.RhythmDBEntry):
+				entry = arg
+
 		if rb.entry_equal(entry, self.current_entry) is False:
 			# track changed while we were searching
 			return
