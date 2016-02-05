@@ -11,6 +11,12 @@ You can get the old style back with this plugin.
 Installation
 ------------
 
+#### Ubuntu & derivates: PPA ####
+
+In Ubuntu based distribution, you can install this plugin via [this PPA by fossfreedom](https://launchpad.net/~fossfreedom/+archive/rhythmbox-plugins).
+
+#### Manual installation ####
+
 *Important*: The 'master' branch only works with the new Ryhtmbox 3 and is incompatible with older Rhytmbox 2.xx versions. If you are still on Rythmbox 2.xx, head over to the 'RB2' branch.
 
 	1.) Press the 'Donwload ZIP' button and extract the .zip file.
