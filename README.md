@@ -24,4 +24,4 @@ Installation
 Screenshot
 -----------
 
-![Screenshot](http://www.dmo60.de/ArtDisplayScreenshot.png)
+![Screenshot](img/screenshot.png)
