@@ -381,7 +381,7 @@ class ArtDisplayPlugin(GObject.GObject, Peas.Activatable):
             key = entry.create_ext_db_key(RB.RhythmDBPropType.ALBUM)
             self.art_store.request(key, self.art_store_request_cb, entry)
 
-    def art_store_request_cb(self, key, filename, data, entry):
+    def art_store_request_cb(self, key, key2, filename, data, entry):
         if rb.entry_equal(entry, self.current_entry) is False:
             # track changed while we were searching
             return
