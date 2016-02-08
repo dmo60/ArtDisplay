@@ -381,7 +381,12 @@ class ArtDisplayPlugin(GObject.GObject, Peas.Activatable):
             key = entry.create_ext_db_key(RB.RhythmDBPropType.ALBUM)
             self.art_store.request(key, self.art_store_request_cb, entry)
 
-    def art_store_request_cb(self, key, key2, filename, data, entry):
+    def art_store_request_cb(self, *args):
+        # Rhythmbox 3.2 introduced an additional argument, using *args ensures backwards compatibility
+        entry = args[-1]
+        data = args[-2]
+        filename = args[-3]
+
         if rb.entry_equal(entry, self.current_entry) is False:
             # track changed while we were searching
             return
